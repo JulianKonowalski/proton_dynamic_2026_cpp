@@ -17,7 +17,7 @@ działania będzie przejście wszystkich testów zawartych w
 Aby sklonować projekt do folderu, w którym został otwarty wiersz poleceń, posłuż
 się komendą:
 ```
-git clone --recurse-submodules https://github.com/JulianKonowalski/proton_dynamic_2026.git
+git clone --recurse-submodules https://github.com/JulianKonowalski/proton_dynamic_2026_cpp.git
 ```
 
 ## Budowanie
