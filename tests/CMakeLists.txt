@@ -1,0 +1,33 @@
+project("PROTON_RECRUITMENT_CPP_TESTS" LANGUAGES C CXX)
+
+#------------------------------------------------------------------------------#
+
+enable_testing()
+
+#------------------------------------------------------------------------------#
+
+file(GLOB_RECURSE SOURCES CMAKE_CONFIGURE_DEPENDS ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
+
+#------------------------------------------------------------------------------#
+
+add_executable(${PROJECT_NAME})
+target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
+target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gtest_main)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+#------------------------------------------------------------------------------#
+
+include(GoogleTest)
+gtest_discover_tests(${PROJECT_NAME})
+
+#------------------------------------------------------------------------------#
+
+add_custom_command(
+    TARGET ${PROJECT_NAME}
+    COMMENT "Run all tests"
+    POST_BUILD
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMAND ./tests/${PROJECT_NAME}
+)
+
+#------------------------------------------------------------------------------#
